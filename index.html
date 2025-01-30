@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Mom!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h1 {
+            color: #ff4081;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            height: 300px; /* Height for slideshow */
+            margin-top: 15px;
+            overflow: hidden; /* For smooth transitions */
+        }
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure aspect ratio is maintained */
+            object-position: center; /* Center the image */
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out; /* Smooth transitions */
+            display: block; /* Ensure images are block-level elements */
+        }
+        .active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎂 Happy Birthday, MUMMY! 🎉</h1>
+        <p No matter how far I am, my heart is always with you. Thank you for your endless love, warmth, and support. 
+        Every moment with you is a treasure, and I cherish all the memories we've shared. I may not be there to celebrate with you in person, 
+        but I hope this brings a smile to your face. Wishing you a day filled with happiness, love, and all the joy you bring into my life. 💖</p>
+
+        <div class="slideshow-container" id="slideshow"></div>
+    </div>
+
+    <script>
+        const images = [
+            "https://i.ibb.co/Tq2hF8Q3/Whats-App-Image-2025-01-30-at-23-25-47.jpg", // Replace with your image URLs
+            "https://i.ibb.co/wNvBF4bX/Whats-App-Image-2025-01-30-at-23-24-47.jpg",
+            "https://i.ibb.co/pBcLkSRr/Whats-App-Image-2025-01-30-at-23-24-46.jpg",
+            "https://i.ibb.co/RG7b7Bbj/Whats-App-Image-2025-01-30-at-23-24-45.jpg",
+        ];
+
+        function createSlideshow(images) {
+            const slideshow = document.getElementById('slideshow');
+            let slideIndex = 0;
+
+            images.forEach(imageSrc => {
+                const img = document.createElement('img');
+                img.src = imageSrc;
+                img.classList.add('slide');
+                slideshow.appendChild(img);
+            });
+
+            const slides = document.querySelectorAll('.slide');
+            slides[0].classList.add('active'); // Activate the first slide
+
+            setInterval(() => {
+                slides.forEach(slide => slide.classList.remove('active'));
+                slideIndex = (slideIndex + 1) % slides.length;
+                slides[slideIndex].classList.add('active');
+            }, 3000);
+        }
+
+        createSlideshow(images);
+    </script>
+</body>
+</html>
